@@ -91,6 +91,7 @@ public class Main {
 		System.out.println(A * Integer.parseInt(digits[2]));
 		System.out.println(A * Integer.parseInt(digits[1]));
 		System.out.println(A * Integer.parseInt(digits[0]));
+		
 		System.out.println(A * B);
 
 	}
