@@ -11,19 +11,6 @@ console.log(`\\    /\\
 (  /  )
  \\(__)|`);
 
- // 4번 
-console.log(`|\\_/|
-|q p|   /}
-( 0 )"""\\
-|"^"\`    |
-||_/=\\\\__|`);
-
-// 5번 
-var fs = require('fs');
-var input = fs.readFileSync('/dev/stdin').toString().split(' ');
-var a = parseInt(input[0]);
-var b = parseInt(input[1]);
-console.log(a+b);
 
 // 7번
 var fs = require('fs');
@@ -50,4 +37,4 @@ console.log(a*b);
 console.log(Math.floor(a / b));
 console.log(a%b);
 
-// 
+
