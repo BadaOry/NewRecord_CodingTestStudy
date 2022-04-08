@@ -136,31 +136,57 @@ public class OneDimensionalArray {
 
 		int num = sc.nextInt();
 		String[] ox = new String[num];
-		String[] O = null; 
+		String[] O = null;
+		int sum = 0;
 
 		for (int i = 0; i < ox.length; i++) {
 			ox[i] = sc.next();
-						
-			O = ox[i].toString().split("X");
-			System.out.println(Arrays.toString(O));
-		}
 
-		// 아직 문제 푸는중
-		
+			O = ox[i].toString().split("X");
+			for (int j = 0; j < O.length; j++) {
+				if (O[j].contains("O")) {
+					long count = O[j].chars().filter(o -> o == 'O').count();
+
+					for (int k = 0; k < count; k++) {
+						sum += count - k;
+					}
+				}
+			}
+			System.out.println(sum);
+			sum = 0;
+		}
 	}
 
 	// (1차원배열) 7번 문제
 	public void question7() {
 		Scanner sc = new Scanner(System.in);
 		int num = sc.nextInt();
-		int caseArr[] = new int[num];  
-		
-		for(int i=0;i<caseArr.length;i++) {
-			
+		int caseArr[] = new int[num];
+
+		for (int i = 0; i < caseArr.length; i++) {
+			int num2 = sc.nextInt();
+			int student[] = new int[num2];
+			int sum = 0;
+			double avg = 0;
+			double count = 0;
+			double result = 0;
+
+			for (int j = 0; j < num2; j++) {
+				student[j] = sc.nextInt();
+				sum += student[j];
+			}
+			avg = sum / num2;
+
+			for (int k = 0; k < student.length; k++) {
+				if (student[k] > avg) {
+					count++;
+				}
+			}
+
+			result = count / num2 * 100;
+
+			System.out.println(String.format("%.3f", result) + "%");
 		}
-		
-		
-		
 	}
-	
+
 }
