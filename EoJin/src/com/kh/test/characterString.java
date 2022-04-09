@@ -18,7 +18,25 @@ public class characterString {
 		IntStream re = chr.chars();
 		re.forEach(i->System.out.println(i));
 	}
-
+	
+	public void question2() {
+		Scanner sc = new Scanner(System.in);
+		int sum = 0;
+		int count = sc.nextInt();
+		sc.nextLine();
+		String num = sc.nextLine();
+		
+		for(int i=0;i<count;i++) {
+			// 1. getNumericValue를 사용하여 정수변환
+			int n = Character.getNumericValue(num.charAt(i));
+			
+			// 2. char에서 0(아스키코드 값 : 48)빼기
+			// int n = num.charAt(i)-'0';
+			sum += n;			
+		}
+		System.out.println(sum);
+		
+	}
 	
 	public void question4() {
 		Scanner sc = new Scanner(System.in);
