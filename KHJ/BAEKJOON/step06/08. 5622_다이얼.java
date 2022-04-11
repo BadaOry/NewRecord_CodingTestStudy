@@ -57,7 +57,7 @@ public class Main {
 		int t = 0;
 		
 	// ---------------------------------------------
-	 // 배열을 사용하지 않고 바로 s.charAt(i)을 넣어도 됬을듯..	
+	 // 배열을 사용하지 않고 바로 s.charAt(i)을 사용해도 됐을듯..	
 		char[] arr = new char[s.length()];
 		
 		for(int i = 0; i < s.length(); i++) {
