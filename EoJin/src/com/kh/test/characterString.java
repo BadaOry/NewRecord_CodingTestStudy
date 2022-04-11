@@ -1,14 +1,11 @@
 package com.kh.test;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class characterString {
 
@@ -68,18 +65,32 @@ public class characterString {
 
 	}
 
+	// 문제는 해결되는데 자꾸 메모리초과뜸..... 뭐지??? sc때문인가 싶어서 br썼는데도 그런데..
+	// map써서 그런가?? map때문에 그런거면 넘 쪼잔하다ㅠ 아님 uppercase때문?
 	public void question5() {
-		Scanner sc = new Scanner(System.in);
-		String str[] = sc.nextLine().split("");
-		int count = 0;
-		int arr[] = new int[26];
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
+//		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String upperStr = "";
+		int num = 0;
+		String str[];
+
+		try {
+			upperStr = br.readLine().toUpperCase();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		str = upperStr.split("");
+		num = str.length;
+
+		int count = 0;
 		int max = 0;
 		String maxstr = "";
 
-		for (int i = 0; i < str.length; i++) {
+		for (int i = 0; i < num; i++) {
 
-			for (int j = 0; j < str.length; j++) {
+			for (int j = 0; j < num; j++) {
 				if (str[i].equals(str[j])) {
 					count++;
 					map.put(str[i], count);
@@ -87,25 +98,20 @@ public class characterString {
 			}
 			count = 0;
 		}
-		System.out.println(map.entrySet());
 
-//		Stream<Map.Entry<String, Integer>> sorted = map.entrySet().stream()
-//				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
-//		sorted.forEach(System.out::println);
-		
-		for(String key : map.keySet()) {
+		for (String key : map.keySet()) {
 
-			if(map.get(key)>=max) {
-				if(map.get(key)==max) {
+			if (map.get(key) >= max) {
+				if (map.get(key) == max) {
 					maxstr = "?";
-				}else {
-					max=map.get(key);
-					maxstr = key;	
-				}	
+				} else {
+					max = map.get(key);
+					maxstr = key;
+				}
 			}
 		}
-		
-		System.out.println(max+"    "+maxstr);
+
+		System.out.println(maxstr);
 
 	}
 
@@ -166,6 +172,47 @@ public class characterString {
 		}
 		System.out.println(sum);
 
+	}
+
+	public void question9() {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		int num = str.length();
+		int count = 0;
+
+		for (int i = 0; i < num; i++) {
+			char ch = str.charAt(i);
+			switch (ch) {
+			case 'c':
+				if (i < num - 1 && (str.charAt(i + 1) == '=' || str.charAt(i + 1) == '-')) {
+					count -= 1;
+				}
+				break;
+			case 'd':
+				if (i < num - 2 && str.charAt(i + 1) == 'z' && str.charAt(i + 2) == '=') {
+					count -= 1;
+				} else if (i < num - 1 && str.charAt(i + 1) == '-') {
+					count -= 1;
+				}
+				break;
+			case 'l':
+			case 'n':
+				if (i < num - 1 && str.charAt(i + 1) == 'j') {
+					count -= 1;
+				}
+				break;
+			case 's':
+			case 'z':
+				if (i < num - 1 && str.charAt(i + 1) == '=') {
+					count -= 1;
+				}
+				break;
+			}
+
+			count++;
+
+		}
+		System.out.println(count);
 	}
 
 }
