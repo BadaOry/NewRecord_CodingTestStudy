@@ -99,19 +99,100 @@ public class step7(string) {
 //        System.out.println(cnt);
 //    }
 		
+	// 2022.04.12 문제풀이
+	// 3.알파벳 찾기
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		String str=br.readLine();
+		char[] charr=str.toCharArray();  //입력받은 String타입을 char배열에 알파벳 한개 한개 저장
+		int result=-1; 	//-1로 가정
+		for(int j='a';j<='z';j++) {
+			result=-1;
+			for(int i=0;i<str.length();i++) {	
+				if(charr[i]==j){	
+					result=i;
+                   	break;
+				}
+			}
+			System.out.print(result+" ");
+		}
+		
+	}	
 		
 		
+	// 6. 단어의 개수
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+	StringTokenizer st = new StringTokenizer(br.readLine()," ");
+	System.out.print(st.countTokens());
+	
+	}
 		
 		
+	// 7. 상수
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	StringTokenizer st = new StringTokenizer(br.readLine());
+	int A = Integer.parseInt(st.nextToken());
+	int B = Integer.parseInt(st.nextToken());
+	int reA = (A%10)*100 + ((A/10)%10)*10 + (A/100); //백의자리와 일의자리를 교환
+	int reB = (B%10)*100 + ((B/10)%10)*10 + (B/100);
+	if(reA > reB)
+		System.out.println(reA);
+	else
+		System.out.println(reB);
 }
+		
+		
+	// 2022.04.13 문제풀이
+	// 10. 그룹 단어 체커
+	
+	//BufferedReader 선언 및 반복변수 N 선언 
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+	int N = Integer.parseInt(br.readLine()); 
+	int count =0;
+	
+	// 반복문
+	for(int i= 0; i<N; i++)
+	{
+		// 그룹단어체크 메서드 호출 -> 그룹단어의 경우 count++;
+		if(isGroup(br.readLine()))
+			count++;
+	}
+	
+		System.out.print(count);
+	}
+	//그룹 단어 체크 메서드 선언
+	static boolean isGroup(String str) {
+		//그룹단어체크 변수 선언
+		boolean check = true; 
+		int[] alphabet = new int[26]; //중복체크용 배열
+		int pre = -1, cur = -1;	//이전단어,현재단어
+		
+		//단어갯수만큼 반복시작
+		for(int i=0; i<str.length(); i++)
+		{
+			// 현재단어
+			cur = str.charAt(i) -97;
+			
+			// 현재단어,이전단어가 다를 경우 -> 이전단어가 -1 아니면 알파벳 배열 -1로 변경
+			
+			if(cur != pre) {
+				if(pre != -1) 
+					alphabet[pre] = 01;
+				
+				// 이전단어를 현재단어로 변경
+				pre = cur;
+			}
+			
+			// 현재단어의 알파벳배열의 -1로 나오면 이전에 한번 변경이 됬으므로 그룹단어가 아님
+			
+			if(alphabet[cur] ==-1) {
+				check = false;
+				break;
+			}
+		}
+			
+			return check;
+		}
+			
+	}
