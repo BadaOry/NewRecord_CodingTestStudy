@@ -157,7 +157,7 @@ public class characterString {
 		
 	}
 	
-	// 답은 잘 나오는데 채점 시 런타임 에러 뜸. 나중에 다시 확인 필요
+	// 답은 잘 나오는데 채점 시  런타임 에러 뜸. 나중에 다시 확인 필요
 	public void question7() {
 		Scanner sc = new Scanner(System.in);
 		String[] num1 = sc.nextLine().split(""); 
@@ -297,6 +297,21 @@ public class characterString {
 
 		}
 		System.out.println(count);
+	}
+	
+	public void question10() {
+		Scanner sc = new Scanner(System.in);
+		
+		int num = sc.nextInt();
+		String[] word = new String[num];
+		
+		for(int i=0;i<num;i++) {
+			word[i] = sc.nextLine();
+		}
+		
+		
+		
+		
 	}
 
 }
