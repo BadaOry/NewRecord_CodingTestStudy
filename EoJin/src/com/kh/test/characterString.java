@@ -297,21 +297,21 @@ public class characterString {
 
 	public void question10() {
 		Scanner sc = new Scanner(System.in);
-		boolean alp[] = new boolean[26];
 		int num = sc.nextInt();
 		int count = num;
 
 		for (int i = 0; i < num; i++) {
 			String word = sc.next();
+			boolean alp[] = new boolean[26];
 
-			for (int j = 0; j < word.length() - 1; j++) {
+			for (int j = 0; j < word.length()-1; j++) {
 				if (word.charAt(j) != word.charAt(j + 1)) {
-					if (alp[word.charAt(j + 1) - 97] == true) {
+					if (alp[word.charAt(j+1) - 97] == true) {
 						count--;
 						break;
 					}
 				}
-				alp[word.charAt(i) - 'a'] = true;
+				alp[word.charAt(j) - 97] = true;
 			}
 		}
 
