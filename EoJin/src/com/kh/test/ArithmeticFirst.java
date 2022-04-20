@@ -35,41 +35,65 @@ public class ArithmeticFirst {
 //		
 //		System.out.println(result);	
 	}
-	
+
 	// 벌집
 	public void question2() {
 		Scanner sc = new Scanner(System.in);
 		int num = sc.nextInt();
-		
+
 		int floor = 1;
 		int count = 1;
 		int tmp = 1;
-		
-		while(true) {
-			if(floor>=num) {
+
+		while (true) {
+			if (floor >= num) {
 				break;
 			}
-			tmp = 6*(count++);
+			tmp = 6 * (count++);
 			floor += tmp;
 		}
 		System.out.println(count);
-				
+
 	}
-	
+
 	// ACM 호텔
 	public void question5() {
-        Scanner sc=new Scanner(System.in);
-        int testNum=sc.nextInt();
-        
-        for(int i=0; i<testNum; i++) {
-            int H=sc.nextInt();
-            int W=sc.nextInt();
-            int N=sc.nextInt();
-            
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int H = 0;
+		int W = 0;
+		int N = 0;
 
-        } 
+		for (int i = 0; i < num; i++) {
+			H = sc.nextInt();
+			W = sc.nextInt();
+			N = sc.nextInt();
+
+			int floor = N % H, room = N / H + 1;
+
+			if (N % H == 0) {
+				room = N / H;
+				floor = H;
+			}
+			System.out.println(floor * 100 + room);
+
+//			for (int j = 0; j < H; j++) {
+//				for (int k = 0; k < W; k++) {
+//					room[j][k] = roomNum++;
+//				}
+//			}
+//			
+//			
+//			for(int l=0;l<H;l++) {
+//				for(int j=0;j<W;j++) {
+//					System.out.print(room[l][j]+" ");
+//				}
+//			}
+
+		}
+
 	}
-	
+
 	// 부녀회장
 	public void question6() {
 		Scanner sc = new Scanner(System.in);
@@ -80,7 +104,7 @@ public class ArithmeticFirst {
 		for (int i = 0; i < 14; i++) {
 			apart[0][i] = i + 1;
 		}
-		
+
 		for (int i = 1; i <= 14; i++) {
 			for (int j = 0; j < 14; j++) {
 				for (int q = 0; q <= j; q++) {
@@ -88,7 +112,7 @@ public class ArithmeticFirst {
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < T; i++) {
 			int k = sc.nextInt();
 			int n = sc.nextInt();
@@ -120,10 +144,42 @@ public class ArithmeticFirst {
 //			System.out.println(i);
 //		}
 	}
-	
-	// 
+
+	// 설탕 배달
 	public void question7() {
-		
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int result = 0;
+		int left = 0;
+		int n = 0;
+
+		if (num % 5 == 0) {
+			System.out.println(num / 5);
+		} else if (num % 5 != 0 && (num % 5) % 3 == 0) {
+			result = num / 5;
+			left = num % 5;
+
+			if (left % 3 == 0) {
+				result += left / 3;
+				System.out.println(result);
+			} else {
+				System.out.println(-1);
+			}
+
+		} else if (num % 5 != 0 && (num % 5) % 3 != 0) {
+			while (true) {
+				if (num % 5 == 0) {
+					System.out.println(num / 5 + n);
+					break;
+				} else if (num < 0) {
+					System.out.println(-1);
+					break;
+				}
+				num = num - 3;
+				n++;
+			}
+		}
+
 	}
 
 }
