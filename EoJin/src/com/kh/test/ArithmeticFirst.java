@@ -35,33 +35,95 @@ public class ArithmeticFirst {
 //		
 //		System.out.println(result);	
 	}
+	
+	// 벌집
+	public void question2() {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		
+		int floor = 1;
+		int count = 1;
+		int tmp = 1;
+		
+		while(true) {
+			if(floor>=num) {
+				break;
+			}
+			tmp = 6*(count++);
+			floor += tmp;
+		}
+		System.out.println(count);
+				
+	}
+	
+	// ACM 호텔
+	public void question5() {
+        Scanner sc=new Scanner(System.in);
+        int testNum=sc.nextInt();
+        
+        for(int i=0; i<testNum; i++) {
+            int H=sc.nextInt();
+            int W=sc.nextInt();
+            int N=sc.nextInt();
+            
 
-	// 아니 여기선 답 나오는데 백준은 왜 안나오는건데..?? 뭔가 틀렸나?
+        } 
+	}
+	
+	// 부녀회장
 	public void question6() {
 		Scanner sc = new Scanner(System.in);
-		int testCase = sc.nextInt();
-		int[][] apt = new int[15][15];
-		int result[] = new int[testCase];
+		int T = sc.nextInt();
 
-		for (int i = 0; i < 15; i++) {
-			apt[i][1] = 1;
-			apt[0][i] = i;
+		int[][] apart = new int[15][14];
+
+		for (int i = 0; i < 14; i++) {
+			apart[0][i] = i + 1;
 		}
-
-		for (int i = 0; i < testCase; i++) {
-			int floor = sc.nextInt();
-			int room = sc.nextInt();
-
-			for (int j = 1; j <= floor; j++) {
-				for (int k = 2; k <= room; k++) {
-					apt[j][k] = apt[j][k - 1] + apt[j - 1][k];
-					result[i] = apt[j][k];
+		
+		for (int i = 1; i <= 14; i++) {
+			for (int j = 0; j < 14; j++) {
+				for (int q = 0; q <= j; q++) {
+					apart[i][j] += apart[i - 1][q];
 				}
 			}
 		}
-		for(int i:result) {
-			System.out.println(i);
+		
+		for (int i = 0; i < T; i++) {
+			int k = sc.nextInt();
+			int n = sc.nextInt();
+
+			System.out.println(apart[k][n - 1]);
 		}
+//		Scanner sc = new Scanner(System.in);
+//		int testCase = sc.nextInt();
+//		int[][] apt = new int[15][15];
+//		int result[] = new int[testCase];
+//
+//		for (int i = 0; i < 15; i++) {
+//			apt[i][1] = 1;
+//			apt[0][i] = i;
+//		}
+//
+//		for (int i = 0; i < testCase; i++) {
+//			int floor = sc.nextInt();
+//			int room = sc.nextInt();
+//
+//			for (int j = 1; j <= floor; j++) {
+//				for (int k = 2; k <= room; k++) {
+//					apt[j][k] = apt[j][k - 1] + apt[j - 1][k];
+//					result[i] = apt[j][k];
+//				}
+//			}
+//		}
+//		for(int i:result) {
+//			System.out.println(i);
+//		}
+	}
+	
+	// 
+	public void question7() {
+		
 	}
 
 }
