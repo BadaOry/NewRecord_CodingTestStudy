@@ -1,5 +1,10 @@
 package com.kh.test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class ArithmeticFirst {
@@ -54,6 +59,84 @@ public class ArithmeticFirst {
 		}
 		System.out.println(count);
 
+	}
+
+	// 분수찾기
+	public void question3() {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int cnt = 0;
+		int line = 0;
+
+		// 1. 입력받은 num이 몇 번째 라인에 있는지 찾기(등차수열)
+		while (cnt < num) {
+			line++;
+			cnt = line * (line + 1) / 2;
+		}
+		// System.out.println(line);
+
+		// 2. 라인이 짝수라면 분자↑ 분모↓, 홀수라면 분자↓ 분모↑
+		if (line % 2 == 0) {
+			int top = line - (cnt - num);
+			int bottom = 1 + (cnt - num);
+
+			System.out.println(top + "/" + bottom);
+		} else {
+			int top = 1 + (cnt - num);
+			int bottom = line - (cnt - num);
+
+			System.out.println(top + "/" + bottom);
+		}
+
+	}
+
+	// 달팽이는 올라가고 싶다.(시간초과때문에 bf로 바꿈)
+	public void question4() {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			int A = Integer.parseInt(st.nextToken());
+			int B = Integer.parseInt(st.nextToken());
+			int V = Integer.parseInt(st.nextToken());
+
+			int day = (V - B) / (A - B);
+			if ((V - B) % (A - B) != 0) {
+				day++;
+			}
+			System.out.println(day);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+//		시간초과1
+//		int result = A - B;
+//		int count = 1;
+//
+//		while (result < V && V < 1000000001) {
+//			result = result + A;
+//
+//			if (result != V) {
+//				result -= B;
+//			}
+//
+//			count++;
+//		}
+//		System.out.println(count);
+
+//		시간초과2
+//		Scanner sc = new Scanner(System.in);
+//		int A = sc.nextInt();
+//		int B = sc.nextInt();
+//		int V = sc.nextInt();
+//		
+//		int day = (V - B) / (A - B);
+//        
+//		if ((V - B) % (A - B) != 0) {
+//			day++;
+//		}
+//		System.out.println(day);
+//		
 	}
 
 	// ACM 호텔
@@ -180,6 +263,15 @@ public class ArithmeticFirst {
 			}
 		}
 
+	}
+	
+	// 큰 수 A+B(모든 문제가 이렇게 쉽다면 얼마나 좋을까.. )
+	public void question8() {
+		Scanner sc = new Scanner(System.in);
+		BigInteger A = sc.nextBigInteger();
+		BigInteger B = sc.nextBigInteger();
+
+		System.out.println(A.add(B));
 	}
 
 }
