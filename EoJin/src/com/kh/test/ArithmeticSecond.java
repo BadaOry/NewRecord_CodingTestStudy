@@ -97,7 +97,6 @@ public class ArithmeticSecond {
 			}
 		}
 
-		
 //		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //		try {
 //	        String[] str = br.readLine().split(" ");
@@ -118,6 +117,104 @@ public class ArithmeticSecond {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
+
+	}
+
+	// 베르트랑 공준
+	public void question5() {
+		Scanner sc = new Scanner(System.in);
+		boolean[] arr = new boolean[1000000];
+		arr[0] = arr[1] = true;
+		int count = 0;
+
+		while (true) {
+			int M = sc.nextInt();
+			int N = M * 2;
+
+			if (M == 0) {
+				break;
+			} else {
+				for (int i = 2; i <= N; i++) {
+					if (arr[i] == false) {
+						if (i > M)
+							count++;
+						for (int j = i + i; j <= N; j += i)
+							arr[j] = true;
+					}
+				}
+				System.out.println(count);
+				count = 0;
+			}
+		}
+	}
+
+	// 골드바흐의 추측
+	public void question6() {
+		Scanner sc = new Scanner(System.in);
+
+		int zero = 0;
+		int tNum = 0;
+
+		int T = sc.nextInt();
+
+		for (int i = 0; i < T; i++) {
+			int n = sc.nextInt();
+			boolean[] arr = new boolean[n+1];
+			arr[0] = arr[1] = true;
+
+			for (int j = 2; j <= n; j++) {
+				if (arr[j] == false) {
+					if (j > zero)
+//						System.out.println(j);
+
+					if (j + j == n) {
+						System.out.println(j + " " + j);
+						break;
+					}
+					
+//					else if (tNum + j == n) {
+//						System.out.println(tNum + " " + j);
+//					}
+//
+//					tNum = j;
+
+					for (int k = j + j; k <= n; k += j)
+						arr[k] = true;
+				}
+			}
+			
+			for(int l=0;l<arr.length;l++) {
+				int count = 0;
+				if(arr[l]==false) {
+//					System.out.println(l);
+					
+					for(int o=0;o<arr.length;o++) {
+						if(arr[o]==false) {
+							if(l+o==n && l<o) {
+								System.out.println(l + " " + o);
+								break;
+							}
+						}
+					}
+					
+					
+				}
+			}
+			
+
+//			while (true) {
+//				if (n % j == 0) {
+//					n = n / j;
+//					System.out.println(j);
+//				} else if (n == 1) {
+//					break;
+//				} else {
+//					i++;
+//				}
+//			}
+
+		}
+		
 
 	}
 
