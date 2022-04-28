@@ -159,7 +159,7 @@ public class ArithmeticSecond {
 
 		for (int i = 0; i < T; i++) {
 			int n = sc.nextInt();
-			boolean[] arr = new boolean[n+1];
+			boolean[] arr = new boolean[n + 1];
 			arr[0] = arr[1] = true;
 
 			for (int j = 2; j <= n; j++) {
@@ -167,40 +167,53 @@ public class ArithmeticSecond {
 					if (j > zero)
 //						System.out.println(j);
 
-					if (j + j == n) {
-						System.out.println(j + " " + j);
-						break;
-					}
-					
-//					else if (tNum + j == n) {
-//						System.out.println(tNum + " " + j);
-//					}
-//
-//					tNum = j;
+						if (j + j == n) {
+							System.out.println(j + " " + j);
+							tNum=j;
+							break;
+						}
+							
+						}
 
 					for (int k = j + j; k <= n; k += j)
 						arr[k] = true;
 				}
-			}
 			
-			for(int l=0;l<arr.length;l++) {
-				int count = 0;
-				if(arr[l]==false) {
-//					System.out.println(l);
-					
-					for(int o=0;o<arr.length;o++) {
-						if(arr[o]==false) {
-							if(l+o==n && l<o) {
-								System.out.println(l + " " + o);
-								break;
-							}
+			
+			 if(tNum + tNum != n) {
+					int a = n / 2;
+					int b = n / 2;
+
+					while (true) {
+			            
+						// 두 파티션이 모두 소수일 경우
+						if (!arr[a] && !arr[b]) {
+							System.out.println(a + " " + b);
+							break;
 						}
+						a--;
+						b++;
 					}
-					
-					
 				}
 			}
-			
+
+//			for(int l=0;l<arr.length;l++) {
+//				int count = 0;
+//				if(arr[l]==false) {
+////					System.out.println(l);
+//					
+//					for(int o=0;o<arr.length;o++) {
+//						if(arr[o]==false) {
+//							if(l+o==n && l<o) {
+//								System.out.println(l + " " + o);
+//								break;
+//							}
+//						}
+//					}
+//					
+//					
+//				}
+//			}
 
 //			while (true) {
 //				if (n % j == 0) {
@@ -214,8 +227,27 @@ public class ArithmeticSecond {
 //			}
 
 		}
+	
+	
+	public void question7() {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int w = sc.nextInt();
+		int h = sc.nextInt();
 		
-
+		int width = (w-x)<x?(w-x):x;
+		int height = (h-y)<y?(h-y):y;
+		
+		if(width<height) {
+			System.out.println(width);
+		}else {
+			System.out.println(height);
+		}
+		
+		
 	}
+
+	
 
 }
