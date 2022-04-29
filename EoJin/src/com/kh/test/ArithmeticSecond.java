@@ -169,33 +169,32 @@ public class ArithmeticSecond {
 
 						if (j + j == n) {
 							System.out.println(j + " " + j);
-							tNum=j;
+							tNum = j;
 							break;
 						}
-							
-						}
 
-					for (int k = j + j; k <= n; k += j)
-						arr[k] = true;
 				}
-			
-			
-			 if(tNum + tNum != n) {
-					int a = n / 2;
-					int b = n / 2;
 
-					while (true) {
-			            
-						// 두 파티션이 모두 소수일 경우
-						if (!arr[a] && !arr[b]) {
-							System.out.println(a + " " + b);
-							break;
-						}
-						a--;
-						b++;
+				for (int k = j + j; k <= n; k += j)
+					arr[k] = true;
+			}
+
+			if (tNum + tNum != n) {
+				int a = n / 2;
+				int b = n / 2;
+
+				while (true) {
+
+					// 두 파티션이 모두 소수일 경우
+					if (!arr[a] && !arr[b]) {
+						System.out.println(a + " " + b);
+						break;
 					}
+					a--;
+					b++;
 				}
 			}
+		}
 
 //			for(int l=0;l<arr.length;l++) {
 //				int count = 0;
@@ -226,28 +225,90 @@ public class ArithmeticSecond {
 //				}
 //			}
 
-		}
-	
-	
+	}
+
 	public void question7() {
 		Scanner sc = new Scanner(System.in);
 		int x = sc.nextInt();
 		int y = sc.nextInt();
 		int w = sc.nextInt();
 		int h = sc.nextInt();
-		
-		int width = (w-x)<x?(w-x):x;
-		int height = (h-y)<y?(h-y):y;
-		
-		if(width<height) {
+
+		int width = (w - x) < x ? (w - x) : x;
+		int height = (h - y) < y ? (h - y) : y;
+
+		if (width < height) {
 			System.out.println(width);
-		}else {
+		} else {
 			System.out.println(height);
 		}
-		
-		
+
 	}
 
-	
+	public void question8() {
+		Scanner sc = new Scanner(System.in);
+		int x1 = sc.nextInt();
+		int y1 = sc.nextInt();
+		int x2 = sc.nextInt();
+		int y2 = sc.nextInt();
+		int x3 = sc.nextInt();
+		int y3 = sc.nextInt();
+		int x4 = 0;
+		int y4 = 0;
+
+		if (x1 == x2 && x1 != x3) {
+			x4 = x3;
+		} else if (x1 != x2 && x1 == x3) {
+			x4 = x2;
+		} else {
+			x4 = x1;
+		}
+
+		if (y1 == y2 && y1 != y3) {
+			y4 = y3;
+		} else if (y1 != y2 && y1 == y3) {
+			y4 = y2;
+		} else {
+			y4 = y1;
+		}
+
+		System.out.println("결과 : " + x4 + " " + y4);
+
+	}
+
+	public void question9() {
+		Scanner sc = new Scanner(System.in);
+
+		while (true) {
+			double x = Math.pow(sc.nextInt(), 2);
+			double y = Math.pow(sc.nextInt(), 2);
+			double z = Math.pow(sc.nextInt(), 2);
+
+			if (x == y + z && x != 0) {
+				System.out.println("right");
+			} else if (y == x + z && y != 0) {
+				System.out.println("right");
+			} else if (z == x + y && z != 0) {
+				System.out.println("right");
+			} else if (x != 0 && y != 0 && z != 0) {
+				System.out.println("wrong");
+			}
+
+			if (x == 0 && y == 0 && z == 0) {
+				break;
+			}
+		}
+	}
+
+	public void question10() {
+		Scanner sc = new Scanner(System.in);
+
+		double r = sc.nextDouble();
+
+		// 유클리드 기하학에서의 원의 넓이( 𝜋 * r의 제곱)
+		System.out.println(r * r * Math.PI);
+		// 택시기하학(맨하튼 거리)에서의 원의 넓이(2 * r의 제곱)
+		System.out.println(2 * r * r);
+	}
 
 }
