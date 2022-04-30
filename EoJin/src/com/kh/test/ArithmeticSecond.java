@@ -227,6 +227,7 @@ public class ArithmeticSecond {
 
 	}
 
+	// 직사각형에서 탈출
 	public void question7() {
 		Scanner sc = new Scanner(System.in);
 		int x = sc.nextInt();
@@ -245,6 +246,7 @@ public class ArithmeticSecond {
 
 	}
 
+	// 네 번째 점
 	public void question8() {
 		Scanner sc = new Scanner(System.in);
 		int x1 = sc.nextInt();
@@ -276,6 +278,8 @@ public class ArithmeticSecond {
 
 	}
 
+	
+	// 직각삼각형
 	public void question9() {
 		Scanner sc = new Scanner(System.in);
 
@@ -300,15 +304,36 @@ public class ArithmeticSecond {
 		}
 	}
 
+	// 택시 기하학
 	public void question10() {
 		Scanner sc = new Scanner(System.in);
 
 		double r = sc.nextDouble();
 
-		// 유클리드 기하학에서의 원의 넓이( 𝜋 * r의 제곱)
+		// 유클리드 기하학에서의 원의 넓이(r의 제곱 * 𝜋)
 		System.out.println(r * r * Math.PI);
 		// 택시기하학(맨하튼 거리)에서의 원의 넓이(2 * r의 제곱)
 		System.out.println(2 * r * r);
+	}
+	
+	// 터렛
+	public void question11() {
+		Scanner sc = new Scanner(System.in); 
+		int T = sc.nextInt(); 
+		
+		for(int t=0; t<T; t++){ 
+			int x[]=new int[3]; 
+			int y[]=new int[3]; 
+			int r[]=new int[3]; 
+			for(int i=1; i<=2; i++){ 
+				x[i] = sc.nextInt(); 
+				y[i] = sc.nextInt(); 
+				r[i] = sc.nextInt(); 	
+			}
+			double dotDistance = Math.sqrt(Math.pow(x[1]-x[2],2) + Math.pow(y[1]-y[2],2)); 
+			int circleSum = r[1]+r[2]; 
+		}
+
 	}
 
 }
