@@ -278,7 +278,6 @@ public class ArithmeticSecond {
 
 	}
 
-	
 	// 직각삼각형
 	public void question9() {
 		Scanner sc = new Scanner(System.in);
@@ -315,23 +314,51 @@ public class ArithmeticSecond {
 		// 택시기하학(맨하튼 거리)에서의 원의 넓이(2 * r의 제곱)
 		System.out.println(2 * r * r);
 	}
-	
+
 	// 터렛
 	public void question11() {
-		Scanner sc = new Scanner(System.in); 
-		int T = sc.nextInt(); 
-		
-		for(int t=0; t<T; t++){ 
-			int x[]=new int[3]; 
-			int y[]=new int[3]; 
-			int r[]=new int[3]; 
-			for(int i=1; i<=2; i++){ 
-				x[i] = sc.nextInt(); 
-				y[i] = sc.nextInt(); 
-				r[i] = sc.nextInt(); 	
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		int result;
+
+		for (int i = 0; i < T; i++) {
+			int x1 = sc.nextInt();
+			int y1 = sc.nextInt();
+			int r1 = sc.nextInt();
+			int x2 = sc.nextInt();
+			int y2 = sc.nextInt();
+			int r2 = sc.nextInt();
+//			System.out.println(x1+" "+y1+" "+r1+" "+x2+" "+y2+" "+r2);
+
+			int distance = (int) Math.pow(x1 - x2, 2) + (int) Math.pow(y2 - y1, 2);
+
+			// 두 원의 중심이 같고, 반지름도 같을 때(접점의 개수가 무한할 때)
+			if (x1 == x2 && y1 == y2 && r1 == r2) {
+				result = -1;
+				
+			// 두 점 사이의 거리가 각 원의 반지름의 합보다 클 때
+			} else if (Math.pow(r1 + r2, 2) < distance ) {
+				result = 0;
+
+			// 한 원 안에 다른 원이 있으면서 접점이 없을 때
+			}else if(distance < Math.pow(r2 - r1, 2)) {
+				result = 0;
+				
+			// 내접할 때
+			}else if(distance == Math.pow(r2 - r1, 2)) {
+				result =1;
+				
+			// 외접할 때
+			}else if(distance ==  Math.pow(r1 + r2, 2)) {
+				result = 1;
+			
+			// 모든 조건에 만족하지 않을 때(접점이 2개)
+			}else {
+				result = 2;
 			}
-			double dotDistance = Math.sqrt(Math.pow(x[1]-x[2],2) + Math.pow(y[1]-y[2],2)); 
-			int circleSum = r[1]+r[2]; 
+			
+			System.out.println(result);
+
 		}
 
 	}
