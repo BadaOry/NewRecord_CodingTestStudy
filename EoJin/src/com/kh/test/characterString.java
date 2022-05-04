@@ -41,29 +41,27 @@ public class characterString {
 		System.out.println(sum);
 
 	}
-	
+
 	public void question3() {
 		Scanner sc = new Scanner(System.in);
 		String word = sc.nextLine();
-		char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 
-				'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 		int[] location = new int[26];
-		
-		for(int k=0;k<location.length;k++) {
+
+		for (int k = 0; k < location.length; k++) {
 			location[k] = -1;
 		}
-		
-		for(int i=0;i<alphabet.length;i++) {
-			for(int j=0;j<word.length();j++) {
-				if(alphabet[i]==word.charAt(j) && location[i]==-1) {
+
+		for (int i = 0; i < alphabet.length; i++) {
+			for (int j = 0; j < word.length(); j++) {
+				if (alphabet[i] == word.charAt(j) && location[i] == -1) {
 					location[i] = j;
 				}
 			}
-			System.out.print(location[i]+" ");
+			System.out.print(location[i] + " ");
 		}
 	}
-	
-	
 
 	public void question4() {
 		Scanner sc = new Scanner(System.in);
@@ -138,66 +136,64 @@ public class characterString {
 		System.out.println(maxstr);
 
 	}
-	
+
 	public void question6() {
 		Scanner sc = new Scanner(System.in);
 		String sentence = sc.nextLine();
 		String word[] = sentence.split(" ");
 		int count = 0;
-		
+
 //		Arrays.stream(word).forEach((s)->System.out.print(s+" "));	
 //		System.out.println(word.length);
-		
-		for(int i=0;i<word.length;i++) {
-			if(!word[i].equals("")) {
+
+		for (int i = 0; i < word.length; i++) {
+			if (!word[i].equals("")) {
 				count++;
 			}
 		}
 		System.out.println(count);
-		
+
 	}
-	
-	// 답은 잘 나오는데 채점 시  런타임 에러 뜸. 나중에 다시 확인 필요
+
+	// 답은 잘 나오는데 채점 시 런타임 에러 뜸. 나중에 다시 확인 필요
 	public void question7() {
 		Scanner sc = new Scanner(System.in);
-		String[] num1 = sc.nextLine().split(""); 
+		String[] num1 = sc.nextLine().split("");
 		String[] num2 = sc.nextLine().split("");
 		String pre1 = num1[0];
 		String pre2 = num2[0];
 		int num = 3;
-		
-		for(int i=0;i<num1.length;i++) {	
-			num1[i] = num1[num-1];
+
+		for (int i = 0; i < num1.length; i++) {
+			num1[i] = num1[num - 1];
 			num--;
 		}
 		num1[2] = pre1;
 		num = 3;
-		
-		for(int i=0;i<num2.length;i++) {	
-			num2[i] = num2[num-1];
+
+		for (int i = 0; i < num2.length; i++) {
+			num2[i] = num2[num - 1];
 			num--;
 		}
 		num2[2] = pre2;
-		
+
 		String N1 = "";
 		String N2 = "";
-		
-		for(String str:num1) {
-			N1+=str;
+
+		for (String str : num1) {
+			N1 += str;
 		}
-		
-		for(String str:num2) {
-			N2+=str;
+
+		for (String str : num2) {
+			N2 += str;
 		}
-		
+
 		int aNum = Integer.parseInt(N1);
 		int bNum = Integer.parseInt(N2);
-		
-		System.out.println((aNum>bNum)? aNum: bNum);
 
-		
+		System.out.println((aNum > bNum) ? aNum : bNum);
+
 	}
-	
 
 	public void question8() {
 		Scanner sc = new Scanner(System.in);
@@ -298,20 +294,29 @@ public class characterString {
 		}
 		System.out.println(count);
 	}
-	
+
 	public void question10() {
 		Scanner sc = new Scanner(System.in);
-		
 		int num = sc.nextInt();
-		String[] word = new String[num];
-		
-		for(int i=0;i<num;i++) {
-			word[i] = sc.nextLine();
+		int count = num;
+
+		for (int i = 0; i < num; i++) {
+			String word = sc.next();
+			boolean alp[] = new boolean[26];
+
+			for (int j = 0; j < word.length()-1; j++) {
+				if (word.charAt(j) != word.charAt(j + 1)) {
+					if (alp[word.charAt(j+1) - 97] == true) {
+						count--;
+						break;
+					}
+				}
+				alp[word.charAt(j) - 97] = true;
+			}
 		}
-		
-		
-		
-		
+
+		System.out.println(count);
+
 	}
 
 }
