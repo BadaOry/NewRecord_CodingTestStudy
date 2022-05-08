@@ -1,4 +1,4 @@
-package com.study.yooil.BAEKJOON.Stack;
+package BAEKJOON.step18;
 
 import java.io.BufferedReader;
 import java.io.IOException;
