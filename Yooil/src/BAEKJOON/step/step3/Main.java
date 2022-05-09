@@ -1,4 +1,4 @@
-package BAEKJOON.step3;
+package BAEKJOON.step.step3;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
