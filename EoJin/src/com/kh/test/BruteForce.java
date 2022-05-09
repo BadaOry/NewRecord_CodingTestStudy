@@ -81,4 +81,32 @@ public class BruteForce {
         }
         System.out.println(ans);
 	}
+	
+	public static boolean[][] map;
+	public static int min = 64;
+	
+	public void question4() {
+		Scanner sc = new Scanner(System.in);
+
+		int N = sc.nextInt();
+		int M = sc.nextInt();
+
+		map = new boolean[N][M];
+		
+
+		sc.nextLine();
+
+		for (int i = 0; i < N; i++) {
+			String str = sc.nextLine().trim();
+
+			for (int j = 0; j < M; j++) {
+				if (str.charAt(j) == 'W') {
+					map[i][j] = true;
+				} else {
+					map[i][j] = false;
+
+				}
+			}
+		}
+	}
 };
