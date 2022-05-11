@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 public class Main {
 	static int[] arr1;
@@ -318,76 +317,187 @@ public class Main {
 //			
 //		}
 		
-		// 17299
+//		// 17299
+//		int N = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		int[] count = new int[1000001];
+//		int[] seq = new int[N];
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		
+//		int i = 0;
+//		
+//		while(st.hasMoreTokens()) {
+//			int x = Integer.parseInt(st.nextToken());
+//			
+//			seq[i] = x;
+//			count[x]++;
+//			
+//			i++;
+//		}
+//		
+//		Stack<Integer> stack = new Stack<>();
+//		
+//		for(int j = 0; j < N; j++) {
+//			
+//			while(!stack.isEmpty() && count[seq[stack.peek()]] < count[seq[j]]) {
+//				seq[stack.pop()] = seq[j];
+//			}
+//			
+//			stack.push(j);
+//			
+//			// 시간 초과
+////			for(int k = j + 1; k < N; k++) {
+////				if(count[seq[j]] < count[seq[k]]) {
+////					seq[j] = seq[k];
+////					
+////					break;
+////				}
+////				
+////				if(k == N - 1) {
+////					seq[j] = -1;
+////				}
+////			}
+////			
+////			if(j == 6) {
+////				seq[j] = -1;
+////			}
+//		}
+//		
+//		while(!stack.isEmpty()) {
+//			seq[stack.pop()] = -1;
+//		}
+//		
+//		StringBuilder sb = new StringBuilder();
+//		
+//		for (int result : seq) {
+//			sb.append(result + " ");
+//		}
+//		
+//		System.out.println(sb);
+		
+//		// 1918
+//		String S = br.readLine();
+//		
+//		Stack<Character> stack = new Stack<Character>();
+//		StringBuilder sb = new StringBuilder();
+//		
+//		for(int i = 0; i < S.length(); i++) {
+//			char x = S.charAt(i);
+//			
+//			switch (x) {
+//			case '+':
+//			case '-':
+//			case '*':
+//			case '/':
+//				while(!stack.isEmpty() && priority(stack.peek()) >= priority(x)) {
+//						sb.append(stack.pop());
+//				}
+//				
+//				stack.push(x);
+//				
+//				break;
+//			case '(':
+//				stack.push(x);
+//				
+//				break;
+//			case ')':				
+//				while(true) {
+//					
+//					if(stack.peek() == '(') {
+//						stack.pop();
+//						
+//						break;
+//					}
+//					
+//					sb.append(stack.pop());
+//				}
+//				
+//				break;
+//			default:
+//				sb.append(x);
+//				break;
+//			}
+//						
+//		}
+//		
+//		while(!stack.isEmpty()) {
+//			sb.append(stack.pop());
+//		}
+//		
+//		System.out.println(sb);
+		
+		// 1935
 		int N = 0;
 		
 		N = Integer.parseInt(br.readLine());
 		
-		int[] count = new int[1000001];
-		int[] seq = new int[N];
+		double[] alp = new double[N]; // 0 index가 A이다.(-65)
+		Stack<Double> stack = new Stack<>();
 		
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		String postfix = br.readLine();
 		
-		int i = 0;
-		
-		while(st.hasMoreTokens()) {
-			int x = Integer.parseInt(st.nextToken());
-			
-			seq[i] = x;
-			count[x]++;
-			
-			i++;
+		for(int i = 0 ; i < N; i++) {
+			alp[i] = Integer.parseInt(br.readLine());
 		}
 		
-		Stack<Integer> stack = new Stack<>();
-		
-		for(int j = 0; j < N; j++) {
+		for(int i = 0; i < postfix.length(); i++) {
+			double A = 0;
+			double B = 0;
 			
-			while(!stack.isEmpty() && count[seq[stack.peek()]] < count[seq[j]]) {
-				seq[stack.pop()] = seq[j];
+			char x = postfix.charAt(i);
+			
+			switch (x) {
+			case '+':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A + B);
+				
+				break;
+			case '-':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A - B);
+				
+				break;
+			case '*':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A * B);
+				
+				break;
+			case '/':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A / B);
+				
+				break;
+			default:
+				stack.push(alp[x-65]);
+				
+				break;
 			}
-			
-			stack.push(j);
-			
-			// 시간 초과
-//			for(int k = j + 1; k < N; k++) {
-//				if(count[seq[j]] < count[seq[k]]) {
-//					seq[j] = seq[k];
-//					
-//					break;
-//				}
-//				
-//				if(k == N - 1) {
-//					seq[j] = -1;
-//				}
-//			}
-//			
-//			if(j == 6) {
-//				seq[j] = -1;
-//			}
 		}
 		
-		while(!stack.isEmpty()) {
-			seq[stack.pop()] = -1;
-		}
-		
-		StringBuilder sb = new StringBuilder();
-		
-		for (int result : seq) {
-			sb.append(result + " ");
-		}
-		
-		System.out.println(sb);
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.printf("%.2f", stack.pop());
 		
 	}
+
+	
+	
+	
+	
+//	static int priority(char op) {
+//		if(op == '*' || op == '/') {
+//			return 2;
+//		} else if(op == '+' || op == '-') {
+//			return 1;
+//		} else {
+//			return 0;
+//		}
+//	}
 
 	
 	
