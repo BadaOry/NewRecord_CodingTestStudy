@@ -73,7 +73,35 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
+		// 11655
+        String S = br.readLine();
 		
+        for(int i = 0; i < S.length(); i++) {
+            int temp = S.charAt(i);
+            int x = 0;
+            
+        
+            if(temp >= 65 && temp <= 90) { // 대문자 
+                x = temp + 13;
+                if(x > 90) {
+                    x = x - 90 + 64;
+                }
+                
+                System.out.print((char)x);
+                
+            } else if(temp >= 97 && temp <= 122) { // 소문자
+                x = temp + 13;
+                if(x > 122) {
+                    x = x - 122 + 96;
+                }
+                
+                System.out.print((char)x);
+                
+            } else {
+            	System.out.print((char)temp);
+            }
+		
+        }
 		
 		
 		
