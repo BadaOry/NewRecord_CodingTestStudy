@@ -31,6 +31,10 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
+//		//2743
+//		String S = br.readLine();
+//		
+//		System.out.println(S.length());
 		
 		
 		
