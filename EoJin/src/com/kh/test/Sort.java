@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Sort {
@@ -130,6 +131,19 @@ public class Sort {
 		}
 		System.out.println(N == 1 ? (int) num[0] : maxIndex); // 범위
 		System.out.println((int) (num[N - 1] - num[0]));
+	}
+	
+	public void question5() {
+		Scanner sc = new Scanner(System.in);
+
+		String num = sc.nextLine();
+
+		String[] arr = num.split("");
+
+		Arrays.sort(arr, Comparator.reverseOrder());
+		for (String string : arr) {
+			System.out.print(string);
+		}
 	}
 
 }
