@@ -171,5 +171,34 @@ public class Sort {
 		}
 	
 	}
+	
+	public void question8() {
+		Scanner sc = new Scanner(System.in);
+		String temp = "";
+		int N = sc.nextInt();
+		sc.nextLine();
+		
+		String arr[] = new String[N];
+		
+		for(int i=0;i<arr.length;i++) {
+			arr[i] = sc.nextLine();
+		}
+		
+		Arrays.sort(arr);
+		Arrays.sort(arr, Comparator.comparing(String::length));
+		
+		for(int i = 0; i<arr.length; i++) {
+			if(temp.equals(arr[i])) {
+				continue;
+			}
+			else {
+				System.out.println(arr[i]);
+				temp = arr[i];
+			}
+		}
+
+
+		
+	}
 
 }
