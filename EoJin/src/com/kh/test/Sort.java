@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Sort {
@@ -270,4 +271,23 @@ public class Sort {
 			System.out.println(num);
 		}
 	
+	// 서로 다른 부분 문자열의 개수
+	static HashSet<String> set;
+	public void question27() {
+		Scanner sc =new Scanner(System.in);
+		String s = sc.next();
+		
+		set = new HashSet<String>();
+		
+		String name = "";
+		for(int i=0;i<s.length();i++) {
+			name="";
+			
+			for(int j=i;j<s.length();j++) {
+				name+=s.substring(j, j+1);
+				set.add(name);
+			}
+		}
+		System.out.println(set.size());
+	}
 }
