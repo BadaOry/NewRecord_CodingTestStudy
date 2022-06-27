@@ -253,6 +253,30 @@ public class Sort {
 
 	}
 
+	// 집합과 맵 - 1. 숫자카드
+	public void question21() {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		HashSet<Integer> hashSet = new HashSet<Integer>();
+		for(int i=0; i<N; i++) {
+			hashSet.add(sc.nextInt());	
+		}
+		
+		int M = sc.nextInt();
+		for(int i=0; i<M; i++) {
+			if(hashSet.contains(sc.nextInt())){	
+				System.out.print(1);
+			} else {
+				System.out.print(0);
+			}
+			System.out.print(" ");
+		}
+		
+		sc.close();
+	}
+	
+	
+	
 	// 집합과 맵 - 2. 문자열 집합
 	static HashMap<String, Integer> map;
 	public void question22() {
